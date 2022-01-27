@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <form #eventForm = "ngForm" (ngSubmit)="onUpdate(eventForm)">
+      <input type="hidden" [(ngModel)]="event.id" name="id">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input [(ngModel)]="event.name" name="name" type="text" class="form-control"
+        pattern=".{8,}" required>
+        <div [hidden]="eventForm.controls['name']?.valid" class="error-message">
+          A névnek minimum 8 karakter hosszúnak kell lennie.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input [(ngModel)]="event.date" name="date" type="text" class="form-control"
+        required>
+        <div [hidden]="eventForm.controls['date']?.valid" class="error-message">
+          Adja meg a dátumot.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input [(ngModel)]="event.time" name="time" type="text" class="form-control"
+        required>
+        <div [hidden]="eventForm.controls['time']?.valid" class="error-message">
+          Adja meg az időpontot.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location">Address</label>
+        <input [(ngModel)]="event.location" name="location" type="text" class="form-control"
+        required>
+        <div [hidden]="eventForm.controls['location']?.valid" class="error-message">
+          Adja meg a címet.
+        </div>
+      </div>
+      <button [disabled]="eventForm.invalid" class="btn btn-block btn-primary">
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>
